@@ -33,7 +33,7 @@ This will download county-level TIGER/Line data for 2020 and store the shapefile
 """
 function download_tiger(output_dir; year = 2020, layer = "state")
 
-    url = base_tiger_url(year, layer)
+    url = base_tiger_url(year, TIGER_DICT[layer])
 
     files = list_tiger_files(year, layer)
 
@@ -80,7 +80,7 @@ This will return a vector of file names for the specified year and layer.
 """
 function list_tiger_files(year, layer)
 
-    url = base_tiger_url(year, layer)
+    url = base_tiger_url(year, TIGER_DICT[layer])
 
     html = TidierVest.read_html(url)
     tables = TidierVest.html_elements(html, ["body", "table"])

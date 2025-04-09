@@ -1,10 +1,12 @@
 
+const CENSUS_URL = Ref{String}("https://www2.census.gov/")
+
 """
     base_tiger_url(year, layer)
 
 Returns the base URL for TIGER/Line data with two parameters for year and layer.
 
-`layer` must be a **key** of [`TIGER_DICT`](@ref).
+`layer` must be a **value** of [`TIGER_DICT`](@ref).
 
 The URL returned is guaranteed to end in `/`.
 
@@ -13,7 +15,7 @@ julia> base_tiger_url(1234, "somelayer")
 "https://www2.census.gov/geo/tiger/TIGER1234/somelayer/"
 ```
 """
-base_tiger_url(year, layer) = "https://www2.census.gov/geo/tiger/TIGER$(year)/$(TIGER_DICT[layer])/"
+base_tiger_url(year, layer) = CENSUS_URL[] * "geo/tiger/TIGER$(year)/$(layer)/"
 
 # "https://www2.census.gov/geo/tiger/GENZ2018/shp/cb_2018_us_state_5m.zip"
 

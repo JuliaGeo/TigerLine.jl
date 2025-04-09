@@ -30,7 +30,7 @@ function get(year, layer)
     global download_cache # bring in the global download cache that is set in Scratch.jl
 
     # Get the URL and files for the requested layer and year
-    url = base_tiger_url(year, layer)
+    url = base_tiger_url(year, TIGER_DICT[layer])
     files = list_tiger_files(year, layer)
 
     # Check that there is only one file for the requested layer and year, if not then error
