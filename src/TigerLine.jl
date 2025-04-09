@@ -20,5 +20,8 @@ include("get.jl")
 
 export download_tiger, list_tiger_files, base_tiger_url
 # Note that `get` is not exported here.  The main way to use it is `TigerLine.get(year, layer)`.
+@static if VERSION >= v"1.11"
+    include("public.jl")
+end
 
 end
